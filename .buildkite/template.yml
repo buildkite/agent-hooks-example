@@ -1,0 +1,6 @@
+name: Agent Hooks Example
+description: Use Buildkite Agent hooks to control which teams may run pipelines on an Agent or group of Agents.
+emoji: ":lock:"
+steps:
+  - command: "buildkite-agent pipeline upload"
+    label: ":pipeline:"

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [[ ":$BUILDKITE_BUILD_CREATOR_TEAMS:" != *":examples:"* ]]; then
+  echo "+++ Job rejected 🚨"
+  echo
+  echo "You must be in the examples team to run a job on this agent"
+  exit 1
+else
+  echo "+++ Thanks for being a team player! 🏅"
+  echo
+  echo "You are in the examples team and so may run jobs on this agent ✅"
+  echo
+fi
