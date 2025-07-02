@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Hello, world!"
+echo
+echo "This script has run successfully, so the BUILD_CREATOR is in the examples team:"
+env | egrep "^BUILDKITE_BUILD_CREATOR"
+echo
+echo "Buildkite jobs have a rich set of environment variables you can use in your commands:"
+echo "https://buildkite.com/docs/pipelines/configure/environment-variables"
+echo
+echo "These are also super useful in hooks, around your commands, to enhance agents and steps:"
+echo "https://buildkite.com/docs/agent/v3/hooks"
+echo 
+echo "Check out the Environment tab on this job to see what's available 👆"
