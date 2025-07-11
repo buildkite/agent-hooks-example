@@ -1,6 +1,6 @@
 # Buildkite Agent Hooks Example
 
-[![Build status](https://badge.buildkite.com/fa1773bc74e3b4c38f6ecd29f32f714d153ced0dbd94b89ad9.svg?branch=main)](https://buildkite.com/buildkite/agent-hooks-example)
+[![Build status](https://badge.buildkite.com/fa1773bc74e3b4c38f6ecd29f32f714d153ced0dbd94b89ad9.svg?branch=main)](https://buildkite.com/buildkite/agent-hooks-example/builds/latest?branch=main)
 [![Add to Buildkite](https://img.shields.io/badge/Add%20to%20Buildkite-14CC80)](https://buildkite.com/new)
 
 This repository demonstrates how to use [Buildkite Agent hooks](https://buildkite.com/docs/agent/v3/hooks) to control which teams may run pipelines on specific agents or groups of agents.
@@ -30,9 +30,10 @@ See the full [Getting Started Guide](https://buildkite.com/docs/guides/getting-s
 
 ## How it works
 
-Buildkite agents expose [environment variables](https://buildkite.com/docs/pipelines/configure/environment-variables#buildkite-environment-variables) about the jobs they run, and allow you to define [hooks](https://buildkite.com/docs/agent/v3/hooks) to customize job behavior.
+Buildkite agents expose [environment variables](https://buildkite.com/docs/pipelines/configure/environment-variables#buildkite-environment-variables) about the jobs they run, and allow you to define [hooks](https://buildkite.com/docs/agent/v3/hooks) to customize job behavior. By combining agent hooks with the environment variables exposed by Buildkite agents, you can enforce policies or restrict access based on job context - before a command even runs.
 
-This example uses the `environment` hook (located at [`agent/hooks/environment`](agent/hooks/environment)) to **restrict job execution based on team membership**.
+This example uses the `environment` hook (located at [`agent/hooks/environment`](agent/hooks/environment)) to **restrict job execution based on team membership**. While this example focuses on the `environment` hook, Buildkite also supports [other lifecycle hooks](https://buildkite.com/docs/agent/v3/hooks#job-lifecycle-hooks), such as `pre-command` and `post-command`, which can be used for cleanup, auditing, or advanced workflow control.
+
 
 The `environment` hook runs before code is checked out, making it ideal for early policy enforcement.
 
@@ -59,9 +60,9 @@ Install the `environment` hook on your agents:
 
 2. **Use Dedicated Queues (Optional)**
 
-If you're using this policy on only some agents, isolate them using [dedicated queue][queues] .
+If you're using this policy on only some agents, isolate them using [dedicated queues](https://buildkite.com/docs/agent/v3/queues).
 
-<!-- docs:end -->
+> 🧠 Tip: Hooks like `environment` are executed before any code is checked out, making them ideal for early validation or access control. You can use this to prevent unauthorized users or enforce custom conditions.
 
 ## Related Documentation
 
@@ -81,6 +82,8 @@ If you're using this policy on only some agents, isolate them using [dedicated q
   - [Agent Images Using Hooks](https://buildkite.com/docs/pipelines/hosted-agents/linux#agent-images-using-agent-hooks)
 - [Elastic CI Stack for AWS](https://github.com/buildkite/elastic-ci-stack-for-aws)
   - [S3 Secrets Buckets for Agent Hooks](https://buildkite.com/docs/agent/v3/aws/elastic-ci-stack/ec2-linux-and-windows/secrets-bucket)
+
+<!-- docs:end -->
 
 ## License
 
