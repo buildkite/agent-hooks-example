@@ -1,3 +1,4 @@
+image: "sorchaabel/agent-hooks-pipeline-example:1.0"
 steps:
   - label: ":wave:"
     command: .buildkite/steps/hello
